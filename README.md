@@ -8,6 +8,14 @@
 
 **Firebase:**
 
--   Site oficial: https://firebase.google.com/
--   Documentação: https://firebase.google.com/docs
--   Autenticação: https://firebase.google.com/docs/auth/web/start
+- Site oficial: https://firebase.google.com/
+- Documentação: https://firebase.google.com/docs
+- Autenticação: https://firebase.google.com/docs/auth/web/start
+
+## firebase
+
+escolher web depois de criar o projeto
+Apelido do app (exemplo-auth)
+não marque a caixinha
+
+pare o projeto e instale no cmd node -> npm install firebase
