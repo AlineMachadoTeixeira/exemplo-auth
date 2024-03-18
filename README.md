@@ -23,3 +23,7 @@ pare o projeto e instale no cmd node -> npm install firebase
 deixa marcado no site firebase a opcão --> Usar o npm
 
 - fizemos a pasta firebase.config.js e colocamos no gitignore deixei no eamil as informaçãos
+
+- nesse site https://docs.expo.dev/guides/using-firebase/ tem as esse comando : `npx expo customize metro.config.js`
+
+- e pare o projeto e instale no cmd node -> npx expo customize metro.config.js
