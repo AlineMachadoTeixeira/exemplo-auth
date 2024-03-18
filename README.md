@@ -26,4 +26,20 @@ deixa marcado no site firebase a opcão --> Usar o npm
 
 - nesse site https://docs.expo.dev/guides/using-firebase/ tem as esse comando : `npx expo customize metro.config.js`
 
-- e pare o projeto e instale no cmd node -> npx expo customize metro.config.js
+- e pare o projeto e instale no cmd node -> npx expo customize metro.config.js vai criar a pasta na raiz metro.config e nessa pasta cole esse dados
+
+```
+const { getDefaultConfig } = require('@expo/metro-config');
+
+const defaultConfig = getDefaultConfig(__dirname);
+defaultConfig.resolver.sourceExts.push('cjs');
+
+module.exports = defaultConfig;
+
+```
+
+Volta no site https://console.firebase.google.com/project/exemplo-auth-1d2bf e esolha
+
+e escolha Authentication e escolher E-mail/senha e habilite salvar
+
+usuarios
