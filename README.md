@@ -43,3 +43,5 @@ Volta no site https://console.firebase.google.com/project/exemplo-auth-1d2bf e e
 e escolha Authentication e escolher E-mail/senha e habilite salvar
 
 usuarios
+
+adcionar usuario aline123
