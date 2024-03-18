@@ -19,3 +19,7 @@ Apelido do app (exemplo-auth)
 não marque a caixinha
 
 pare o projeto e instale no cmd node -> npm install firebase
+
+deixa marcado no site firebase a opcão --> Usar o npm
+
+- fizemos a pasta firebase.config.js e colocamos no gitignore deixei no eamil as informaçãos
