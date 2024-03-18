@@ -45,3 +45,7 @@ e escolha Authentication e escolher E-mail/senha e habilite salvar
 usuarios
 
 adcionar usuario aline123
+
+faz a pasta firebase/auth esta no ig
+
+no cmd faz npm install @react-native-async-storage/async-storage
