@@ -1,25 +1,72 @@
-import { Alert, Button, StyleSheet, TextInput, View } from "react-native";
+import {
+  Alert,
+  Button,
+  StyleSheet,
+  TextInput,
+  Vibration,
+  View,
+} from "react-native";
 
-//Importando os recursos de autenticação
-import { Auth } from "../../firebase.config";
+// importando os recursos de dutenticação
+import { auth } from "../../firebase.config";
 
-//Importando a função de login com e-mail e senha
-import { signInWithEmailAndPassword } from "firebase/auth";
+// importando a função de login com e-mail e senha
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import { useState } from "react";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   const login = async () => {
     if (!email || !senha) {
-      Alert.alert("Atenção!", "Preencha e-mail e senha");
+      Alert.alert("atenção", "Preencha o email e senha");
+      Vibration.vibrate(300);
+      // Não esquecer do return para parar a execução
       return;
     }
 
-    console.log(email, senha);
+    try {
+      // Utilizamos essa função para verificar e validar o email e a senha que estão no firebase
+      await signInWithEmailAndPassword(auth, email, senha);
+      // Utilizamos o replace para telas onde não temos volta exemplo telas iniciais
+      navigation.replace("AreaLogada");
+    } catch (error) {
+      console.error(error.code);
+      let menssagem;
+
+      switch (error.code) {
+        case "auth/invalid-credential":
+          menssagem = "Dados Invalidos";
+          break;
+        case "auth/invalid-email":
+          menssagem = "Endereço de email invalido";
+          break;
+
+        default:
+          menssagem = "Houve um erro, tente novamente mais tarde";
+          break;
+      }
+
+      Alert.alert("Ops!", menssagem);
+    }
   };
+
+  // Atalho: anfn -> cria arrow function sem a constante
+  const recuperarSenha = async () => {
+    try {
+      // Quando clicar no botão irá mandar um email para mudar a senha, essa função precisa do auth e email precisa ser importado
+      await sendPasswordResetEmail(auth, email);
+      Alert.alert("Recuperar Senha", "Verifique sua sua caixa de e-mails");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <View style={estilos.container}>
       <View style={estilos.formulario}>
@@ -36,6 +83,11 @@ export default function Login() {
         />
         <View style={estilos.botoes}>
           <Button onPress={login} title="Entre" color="green" />
+          <Button
+            onPress={recuperarSenha}
+            title="Recuperar Senha"
+            color="gray"
+          />
         </View>
       </View>
     </View>
